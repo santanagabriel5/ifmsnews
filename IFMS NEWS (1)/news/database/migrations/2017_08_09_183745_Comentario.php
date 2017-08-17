@@ -16,7 +16,7 @@ class Comentario extends Migration
       Schema::create('Comentarios', function (Blueprint $table) {
           $table->increments('id');
           $table->string('nome');
-          $table->string('texto');
+          $table->text('texto');
           $table->string('email')->nullable();
           $table->boolean('estado')->default(1);
           $table->integer('id_post');

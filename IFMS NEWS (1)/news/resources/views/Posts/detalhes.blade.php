@@ -1,4 +1,19 @@
 @extends('layouts.app')
+@section('menus')
+<a class="navbar-brand active" href="{{ url('/') }}">
+    Home
+</a>
+<a class="navbar-brand" href="{{url('/sobre')}}">
+  Sobre
+</a>
+<a class="navbar-brand" href="{{url('/contatos')}}">
+  Contatos
+</a>
+
+<a class="navbar-brand" href="{{ url('/') }}">
+    Noticias
+</a>
+@stop
 
 @section('content')
 
@@ -6,8 +21,8 @@
 <h1>{{$p->titulo}}</h1>
 <h2>{{$p->chamada}}</h2>
 <img src="{{url('/Imagem/dougras.jpg')}}" alt="Image"/><br>
-
-<h2>{{$p->texto}}</h2>
+<br>
+<h4>{{$p->texto}}</h4>
 <a href="@if(\Auth::check()) {{action('PostController@gerenciadordepost')}} @else {{action('PostController@todosposts',$pagina)}} @endif"><button type="button" class="btn btn-success">Voltar</button></a>
 <br><br><br>
   <h4>Comentarios</h4>
@@ -22,8 +37,16 @@
   </tr>
 </table>
 -->
-</center>
+
 @foreach($comentarios as $comentario)
+
+<div id="comentario">
+Nome :{{$comentario->nome}}  <br> Data :{{$comentario->updated_at}}
+<br>
+{{$comentario->texto}}
+</div>
+<br>
+<!--
   <table class="table table-sm">
     <tr>
       <td>{{$comentario->nome}}</td><td>{{$comentario->updated_at}}</td></tr>
@@ -32,9 +55,10 @@
       </tr>
   </table>
 <br>
-
+-->
 @endforeach
 
+</center>
 
 
   <!--INSERSAO DE COmEnTARIO-->

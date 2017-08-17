@@ -10,3 +10,12 @@
     clear: left;
     text-align: center;
 }
+
+#comentario{
+  background: rgba(221, 221, 221, .7) ;
+  border-radius: 20px;
+  height: 130px;
+  width: 500px;
+  text-align: center;
+  overflow:auto;
+}

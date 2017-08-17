@@ -1,4 +1,19 @@
 @extends('layouts.app')
+@section('menus')
+<a class="navbar-brand active" href="{{ url('/') }}">
+    Home
+</a>
+<a class="navbar-brand" href="{{url('/sobre')}}">
+  Sobre
+</a>
+<a class="navbar-brand" href="{{url('/contatos')}}">
+  Contatos
+</a>
+
+<a class="navbar-brand" href="{{ url('/') }}">
+    Noticias
+</a>
+@stop
 
 @section('content')
 <form action="{{action('PostController@atualiza', $p->id)}}" method="post">

@@ -34,7 +34,8 @@
 
          @for($i = 0; $i < 5 ; $i++)
                        <div class="item @if($i==0) active @endif ">
-                           <img class="center-block" src="{{url('/Imagem/img1.jpg')}}" alt="Imagem" style="max-height: 500px">
+                         <a href="/posts/mostra/{{$p[$i]->id}}/0">
+                           <img class="center-block" src="{{url('/Imagem/img1.jpg')}}" alt="Imagem" style="max-height: 500px"></a>
                            <div class="carousel-caption">
                                   <h3>{{$p[$i]->titulo}}</h3>
                                   <p>{{$p[$i]->chamada}}</p>
