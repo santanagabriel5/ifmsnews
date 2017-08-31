@@ -10,7 +10,7 @@
     Contatos
 </a>
 
-<a class="navbar-brand" href="{{ url('/') }}">
+<a class="navbar-brand" href="{{action('PostController@todosposts', 0)}}">
  Noticias
 </a>
 @stop

@@ -4,21 +4,18 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Database\Eloquent\Model;
 
-class Post extends Model
+class Imagen extends Authenticatable
 {
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
      * @var array
      */
-     protected $table = 'posts';
-
     protected $fillable = [
-      'titulo', 'texto', 'chamada' , 'estado' , 'id_user',
-
+        'nomeantigo','novonome','evento',
     ];
 
     /**
@@ -26,4 +23,7 @@ class Post extends Model
      *
      * @var array
      */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
 }

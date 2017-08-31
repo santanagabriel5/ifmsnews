@@ -10,29 +10,42 @@
   Contatos
 </a>
 
-<a class="navbar-brand" href="{{ url('/') }}">
+<a class="navbar-brand" href="{{action('PostController@todosposts', 0)}}">
     <b>Noticias</b>
 </a>
 @stop
 <center>
 @section('content')
-<?php $o=3;
-$i = -1;
+<?php $o=5;
+$i = 0;
 ?>
-
-  <table  border="2">
-<tr>
+  <table  border="0">
+<tr class="spaca_abaixo">
     @foreach($p as $post)
 
       @if($i==$o )
-          </tr>
-          <tr >
-          <?php $o=$i+3; ?>
+    </tr >
+          <tr class="spaca_abaixo">
+          <?php $o=$i+5; ?>
       @endif
       <?php $i++; ?>
+      <?php $existe =0; ?>
+
         @if($post->estado == 1)
         <?php $existe =1; ?>
-          <td><img src="{{url('/Imagem/dougras.jpg')}}" alt="Image" height="100" width="100"/><a href="/posts/mostra/{{$post->id}}/{{$pagina}}"><h4>{{$post->titulo}}</h4></a><br><h5>{{$post->chamada}}</h5></td>
+
+          <td><a href="/posts/mostra/{{$post->id}}/{{$pagina}}"><div id="textocontatos">
+            <?php $imagen =0; ?>
+            @foreach($imagens as $imagem)
+              @if($imagem->post == $post->id && $imagen==0)
+              <?php $imagen =1; ?>
+              <img class="center-block" src="/storage/{{$imagem->novonome}}" alt="Imagem nao enviada" height="100" width="200">
+              @endif
+            @endforeach
+            <h4>{{$post->titulo}}</h4><h5>
+              {{$post->chamada}}</h5>
+            </div></a></td>
+
         @endif
     @endforeach
   </table>
@@ -45,7 +58,7 @@ $i = -1;
     <a href="{{action('PostController@todosposts', ($pagina-10))}}"><button type="button" class="btn btn-success" name="button">Voltar</button></a>
   @endif
 
-  @if(!isset($existe))
+  @if(($existe == 0))
     @else
       <a href="{{action('PostController@todosposts', ($pagina+10))}}"><button type="button" class="btn btn-success" name="button">Proximo</button></a>
 

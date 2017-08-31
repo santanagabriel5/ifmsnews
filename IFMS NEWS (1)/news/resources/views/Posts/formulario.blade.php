@@ -16,7 +16,7 @@
 @stop
 
 @section('content')
-<form action="/posts/adiciona" method="post">
+<form action="/posts/adiciona" method="post" enctype="multipart/form-data">
   <?php      $user = app('Illuminate\Contracts\Auth\Guard')->user();
    ?>
   <input type="hidden"
@@ -24,7 +24,6 @@
 
   <input type="hidden"
   name="id_user" value="{{{ $user['id'] }}}" />
-
 <div class="form-group">
 <label>Titulo</label>
 <input name="titulo" class="form-control">
@@ -37,6 +36,10 @@
 
 <div class="form-group">
 <textarea name="texto" rows="8" cols="80"></textarea>
+</div>
+
+<div class="form-group">
+  <label>Fotos</label><input type="file" name="arquivo[]" multiple />
 </div>
 
 

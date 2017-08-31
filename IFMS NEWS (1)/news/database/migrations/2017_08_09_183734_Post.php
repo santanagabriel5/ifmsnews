@@ -16,7 +16,6 @@ class Post extends Migration
       Schema::create('Posts', function (Blueprint $table) {
           $table->increments('id');
           $table->string('titulo');
-          $table->string('endereco_imagem')->nullable();
           $table->string('texto');
           $table->string('chamada');
           $table->boolean('estado')->default(1);

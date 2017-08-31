@@ -27,10 +27,10 @@ Route::get('/contatos', 'Controller@contatos');
 
 Route::get('/', 'PostController@telaprincipal');
 
-Route::get('/posts/{number}', 'PostController@todosposts');
+Route::get('/posts/listagem/{number}', 'PostController@todosposts');
 
 
-Route::get('/posts/gerenciador/posts', 'PostController@gerenciadordepost');
+Route::get('/posts/gerenciador', 'PostController@gerenciadordepost');
 
 Route::get('/posts/mostra/{id}','PostController@mostra')/*->where('id','[0-9]+')*/;
 
@@ -38,7 +38,7 @@ Route::get('/posts/mostra/{id}','PostController@mostra')/*->where('id','[0-9]+')
 Route::get('/posts/mostra/{id}/{pagina}','PostController@mostra2')/*->where('id','[0-9]+')*/;
 
 
-Route::get('/posts/novo','PostController@novo');
+Route::get('/posts/formulario','PostController@FORMULARIO');
 
 Route::post('/posts/adiciona','PostController@adiciona');
 

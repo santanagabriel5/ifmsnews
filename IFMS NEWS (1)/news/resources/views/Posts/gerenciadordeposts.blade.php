@@ -4,6 +4,8 @@
 
 
 <a href="{{action('ComentarioController@gerenciadordecomentarios')}}"><button type="button" class="btn btn-default pull-left">Gerenciador de Comentarios</button></a>
+<a href="{{action('PostController@FORMULARIO')}}"><button type="button" class="btn btn-default pull-left">Novo Post</button></a>
+
 <table class="table">
   <thead class="thead-inverse">
 

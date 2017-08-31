@@ -14,8 +14,31 @@
 #comentario{
   background: rgba(221, 221, 221, .7) ;
   border-radius: 20px;
-  height: 130px;
-  width: 500px;
+  height: 25%;
+  width: 50%;
   text-align: center;
   overflow:auto;
+  margin-left: 10px;
+}
+
+#textocontatos {
+  background: rgba(221, 221, 221, .7);;
+  height: 110%;
+  width:  110%;
+  text-align: center;
+  padding:5px 15px 0 15px;
+  align-items: center;
+
+}
+td
+{
+    padding:0 15px 0 15px;
+}
+
+tr.spaca_abaixo>td {
+  padding-bottom: 1em;
+}
+
+#labelcomentarios{
+  padding-left:20px;
 }

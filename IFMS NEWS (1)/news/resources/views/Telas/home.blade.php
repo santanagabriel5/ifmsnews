@@ -10,7 +10,7 @@
   Contatos
 </a>
 
-<a class="navbar-brand" href="{{ url('/') }}">
+<a class="navbar-brand" href="{{action('PostController@todosposts', 0)}}">
     Noticias
 </a>
 @stop
@@ -35,7 +35,13 @@
          @for($i = 0; $i < 5 ; $i++)
                        <div class="item @if($i==0) active @endif ">
                          <a href="/posts/mostra/{{$p[$i]->id}}/0">
-                           <img class="center-block" src="{{url('/Imagem/img1.jpg')}}" alt="Imagem" style="max-height: 500px"></a>
+                           <?php $imagen=0; ?>
+                           @foreach($imagens as $imagem)
+                             @if($imagem->post == $p[$i]->id && $imagen==0)
+                             <?php $imagen =1; ?>
+                             <img class="center-block" src="/storage/{{$imagem->novonome}}" alt="Imagem nao enviada" height="500" width="500">
+                             @endif
+                              @endforeach
                            <div class="carousel-caption">
                                   <h3>{{$p[$i]->titulo}}</h3>
                                   <p>{{$p[$i]->chamada}}</p>

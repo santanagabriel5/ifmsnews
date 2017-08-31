@@ -10,55 +10,78 @@
   Contatos
 </a>
 
-<a class="navbar-brand" href="{{ url('/') }}">
+<a class="navbar-brand" href="{{action('PostController@todosposts', 0)}}">
     Noticias
 </a>
 @stop
 
 @section('content')
-
+@if(\Auth::check())
+<a href=" {{action('PostController@gerenciadordepost')}} "><button type="button" class="btn btn-success">Voltar ao gerenciador</button></a>
+@endif
 <center>
 <h1>{{$p->titulo}}</h1>
 <h2>{{$p->chamada}}</h2>
-<img src="{{url('/Imagem/dougras.jpg')}}" alt="Image"/><br>
+
+<!-- CARROSEL MULEK -->
+<div id="CARROSEL" class="carousel slide" data-ride="carousel">
+
+  <!-- Indicadores -->
+<ol class="carousel-indicators">
+  <?php $o=0; ?>
+   @foreach($imagens as $imag)
+   <li data-target="#CARROSEL" data-slide-to={{$o}} @if($o == 0) class="active" @endif ></li>
+   <?php $o++; ?>
+   @endforeach
+</ol>
+
+           <!--slides -->
+       <div class="carousel-inner" role="listbox">
+         <?php $i=0; ?>
+         @foreach($imagens as $imag)
+
+         <div class="item @if($i==0) active @endif ">
+           <?php $i++; ?>
+
+           <img class="center-block" src="/storage/{{$imag->novonome}}" alt="Imagem nao enviada" style="max-height: 500px">
+          </div>
+
+         @endforeach
+
+       </div>
+
+       <!-- Controles -->
+               <a class="left carousel-control" href="#CARROSEL" role="button" data-slide="prev">
+                   <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                   <span class="sr-only">Anterior</span>
+           </a>
+               <a class="right carousel-control" href="#CARROSEL" role="button" data-slide="next">
+                   <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                   <span class="sr-only">Proximo</span>
+       </a>
+   </div>
+<!-- FIM DO CARROSEL MULEk -->
+
 <br>
-<h4>{{$p->texto}}</h4>
-<a href="@if(\Auth::check()) {{action('PostController@gerenciadordepost')}} @else {{action('PostController@todosposts',$pagina)}} @endif"><button type="button" class="btn btn-success">Voltar</button></a>
-<br><br><br>
-  <h4>Comentarios</h4>
-  <!--listagem DE COmEnTARIO-->
-<!--
-<table class="table table-striped">
-<th align="center" >Nome</th> <th>Comentario</th> <th>Data de Postagem</th>
-  @foreach($comentarios as $comentario)
-  <tr>
-  <td>{{$comentario->nome}}</td> <td>{{$comentario->texto}}</td> <td>{{$comentario->updated_at}}</td>
-  @endforeach
-  </tr>
-</table>
--->
+<h5>{{$p->texto}}</h5>
+</center>
+<br>
+<h3 id="labelcomentarios">Comentarios</h3>
 
 @foreach($comentarios as $comentario)
 
 <div id="comentario">
 Nome :{{$comentario->nome}}  <br> Data :{{$comentario->updated_at}}
 <br>
-{{$comentario->texto}}
+
+<?php $output = str_split($comentario->texto, 20); ?>
+@foreach($output as $texto)
+{{$texto}}
+@endforeach
 </div>
 <br>
-<!--
-  <table class="table table-sm">
-    <tr>
-      <td>{{$comentario->nome}}</td><td>{{$comentario->updated_at}}</td></tr>
-      <tr>
-        <td>{{$comentario->texto}}</td>
-      </tr>
-  </table>
-<br>
--->
 @endforeach
 
-</center>
 
 
   <!--INSERSAO DE COmEnTARIO-->

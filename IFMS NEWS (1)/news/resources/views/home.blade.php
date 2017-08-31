@@ -30,7 +30,8 @@
                                     </form>
                                 </li>
                         </li>
-                    @endif
+                    @endif<a href="{{action('PostController@gerenciadordepost')}}"><button type="button" class="btn btn-default pull-left">Gerenciador de Posts</button></a>
+
                 </div>
             </div>
         </div>
